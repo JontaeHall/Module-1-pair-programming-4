@@ -1,15 +1,12 @@
 package com.techelevator.search;
 
+import com.techelevator.util.TElog;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.FileReader;
+import java.util.*;
 
 public class SearchEngine {
 
@@ -20,12 +17,33 @@ public class SearchEngine {
 		this.sd = sd;
 		this.indexedWords = new HashMap<>();
 	}
-	
+
 	public void indexFiles() throws SearchEngineException, Exception {
 		// Step Five: Index files
+		List<String> index = new LinkedList<>(sd.getFiles());
 
+		for (int i = 0; i < index.size(); i++) {
+			Scanner scan = new Scanner(index.get(i));
+			//FileReader buff = new FileReader("data/file1.txt");
+			String line = "Hello world";
+			while(scan.hasNextLine()) {
+				//StringBuilder line = new StringBuilder(buff.readLine());
+
+				line = scan.nextLine();
+
+
+				indexWords(i, line);
+
+
+			}
+			scan.close();
+	}
+		TElog.log(indexedWordsToString());
 
 	}
+
+
+
 	
 	public List<String> search(String searchString) {
 		List<String> rankedFiles = new ArrayList<>();
