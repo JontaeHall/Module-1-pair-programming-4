@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-public class SearchEngine {
+public class SearchEngine  {
 
 	private SearchDomain sd;
 	private Map<String, List<WordLocation>> indexedWords = null;
@@ -20,12 +20,13 @@ public class SearchEngine {
 
 	public void indexFiles() throws SearchEngineException, Exception {
 		// Step Five: Index files
-		List<String> index = new LinkedList<>(sd.getFiles());
+		List<String> index = new ArrayList<>(sd.getFiles());
 
 		for (int i = 0; i < index.size(); i++) {
-			Scanner scan = new Scanner(index.get(i));
+			File filePath = new File(index.get(i));
+			Scanner scan = new Scanner(filePath);
 			//FileReader buff = new FileReader("data/file1.txt");
-			String line = "Hello world";
+			String line ;
 			while(scan.hasNextLine()) {
 				//StringBuilder line = new StringBuilder(buff.readLine());
 
@@ -39,6 +40,7 @@ public class SearchEngine {
 			scan.close();
 	}
 		TElog.log(indexedWordsToString());
+		//System.out.println(indexedWordsToString());
 
 	}
 

@@ -1,22 +1,20 @@
 package com.techelevator.util;
 import javax.imageio.IIOException;
-import java.io.BufferedWriter;
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 
 public class TElog {
-
+    //TElog exception to find and append the file
     public static void  log(String message){
-        try (BufferedWriter br = new BufferedWriter(new FileWriter("logs/search.log"))){
+        try (FileWriter writing = new FileWriter("logs/search.log", true)){
 
-            br.write(message + "\n");
+            writing.write(message + "\n");
 
 
         }catch (IOException iE) {
             throw new TELogException("File not found.");
         }
+
 
 
     }

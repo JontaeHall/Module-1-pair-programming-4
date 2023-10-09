@@ -16,7 +16,8 @@ public class Application {
 
 			// Step Two: Create TELog, and log the start of the application.
 			//
-			TElog.log("Search application started");
+			TElog.log("Search application started.");
+
 			
 			
 			
@@ -24,27 +25,27 @@ public class Application {
 			//
 			SearchDomain  domainSearch= new SearchDomain("data");
 			TElog.log(domainSearch.toString());
-			
-			
-			
+
+
+
 			// Step Six: Single word search
 			//
 			SearchEngine engine = new SearchEngine(domainSearch);
 			engine.indexFiles();
 			//engine.search("squirrel");
-			List<String> engineSearch = new ArrayList<>();
-			for (String gene: engine.search("squirrel")) {
-
+			List<String> engineSearch = new ArrayList<>(engine.search("squirrel"));
+			if(engineSearch.isEmpty()){
+				System.out.println("Word not found");
 			}
 			for(int i = 0; i< engineSearch.size(); i++){
 				System.out.println(engineSearch.get(i));
-				if(engineSearch.isEmpty()){
-					System.out.println("Word not found");
-				}
+
 			}
 			
 			// Step Seven: Multiple word search
 			//
+
+
 			
 			
 			

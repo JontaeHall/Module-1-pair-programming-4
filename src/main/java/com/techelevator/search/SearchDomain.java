@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -52,7 +53,7 @@ public class SearchDomain {
 	 * @throws SearchDomainException
 	 */
 	private List<String> buildDomain() throws SearchDomainException {
-		List<String> files = new ArrayList<>();
+		List<String> files = new LinkedList<>();
 		// Step Three: Complete the buildDomain method
 		try {
 			File[] fileList = new File(getFolder()).listFiles();
